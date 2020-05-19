@@ -117,3 +117,7 @@ body {
       }
       
   }
+
+  .tophead > * {
+      margin-top: 10px;
+  }
