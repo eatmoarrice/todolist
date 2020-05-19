@@ -8,19 +8,20 @@
     <title>To-do List</title>
 </head>
 <body>
-    <div class="container card d-flex">
-        <h1 class="text-center title    ">No one's To-do List</h1>
-        <h5 class="text-center title">Your list will be saved locally!</h5>
-        <div class="mt-3">
-            <input type="text" class="user-input ml-3" id="todoinput">
-            <button onclick="addItem()">Add</button>
-            <input type="checkbox" onchange="filterDone()" id="cbtop">
-            <label for="cbtop">Show undone tasks only</label>
+    <section class="allcard vertical-center ">
+        <div class="container card d-flex">
+            <h1 class="text-center title    ">No one's To-do List</h1>
+            <h5 class="text-center title">Your list will be saved locally!</h5>
+                <div class="mt-3 ml-3 row vertical-align"> 
+                    <input type="text" class="user-input ml-3" id="todoinput">
+                    <button onclick="addItem()">Add</button>
+                    <input type="checkbox" class="sadas" onchange="filterDone()" id="cbtop">
+                    <label for="cbtop">Show undone tasks only</label>
+                </div>
+            <ul id="result" class="d-flex flex-column list my-2">
+            </ul>
         </div>
-        <ul id="result" class="d-flex flex-column list my-2">
-
-        </ul>
-    </div>
+    </section>
     <script src="script.js"></script>
 </body>
 </html>

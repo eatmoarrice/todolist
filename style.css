@@ -43,24 +43,38 @@ input[type="checkbox"]{
   
     }
 
-    .li-text {
-        background-color: rgba(129, 250, 234, 0.762);
-        color: brown;
-        font-size: 16;
-        font-weight: 600;
-    }
+.li-text {
+    background-color: rgba(129, 250, 234, 0.762);
+    color: brown;
+    font-size: 16;
+    font-weight: 600;
+}
 
 
-    body {
-        background-image: url('kitty.png');
-        background-repeat: repeat;
-    }
+body {
+    background-image: url('kitty.png');
+    background-repeat: repeat;
+}
 
-    .container {
-        background-color: rgba(255, 255, 255, 0.85);
-        border: none;
-    }
+.container {
+    background-color: rgba(255, 255, 255, 0.85);
+    border: none;
+    margin-top: auto;
+    margin-bottom: auto;
+}
 
 #cbtop {
     margin-left: 30px;
+}
+
+.vertical-center {
+    min-height: 100%; 
+    min-height: 100vh; 
+  
+    display: flex;
+    align-items: center;
+  }
+
+.vertical-align {
+    align-items: center;
 }
