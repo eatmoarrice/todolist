@@ -1,0 +1,66 @@
+ul {
+    list-style: none;
+}
+
+.list > div > div * {
+    margin: 10px;
+}
+
+.user-input {
+    max-width: 400px;
+}
+
+.card {
+    max-width: 1000px;
+    min-height: 500px;
+   
+}
+
+.cb {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.x-button {
+    border-radius: 20px;
+    background-color: rgb(218, 19, 19);
+    padding: 10px;
+    line-height: 5px;
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.title {
+    color: white;
+    background-color: rgba(95, 158, 160, 0.556);
+}
+
+input[type="checkbox"]{
+  
+    width: 30px;
+    height: 30px;
+  
+    }
+
+    .li-text {
+        background-color: rgba(129, 250, 234, 0.762);
+        color: brown;
+        font-size: 16;
+        font-weight: 600;
+    }
+
+
+    body {
+        background-image: url('kitty.png');
+        background-repeat: repeat;
+    }
+
+    .container {
+        background-color: rgba(255, 255, 255, 0.85);
+        border: none;
+    }
+
+#cbtop {
+    margin-left: 30px;
+}
