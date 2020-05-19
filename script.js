@@ -1,13 +1,13 @@
 //load local if exists
 
 let items = JSON.parse(localStorage.getItem('localItems'));
-if (items == null) {items = [];}
+if (items == null) {items = [];} 
 let html = localStorage.getItem('localHTML');
 if (html == null) {html = "";}
 else document.getElementById("result").innerHTML = html;
 console.log(items)
 
-//------------------------
+//-----------------------
 
 let addItem = () => {
     let item = {
@@ -29,6 +29,7 @@ let updateList = () => {
     }
     document.getElementById("result").innerHTML = html;
     filterDone();
+    hideBubble();
     localStorage.setItem("localHTML", html);
     localStorage.setItem('localItems', JSON.stringify(items));
 }
@@ -39,6 +40,7 @@ let done = (num) => {
     // else items[num].isDone = false;
     items[num].isDone = !items[num].isDone;
     updateList();
+    hideBubble();
 };
 
 let remove = (index) => {
@@ -60,3 +62,22 @@ let filterDone = () => {
         }
     }
 }
+
+// let complete = () =>  {return items.every(item => {item.isDone == true;})}
+let complete = () => {
+    return items.every(smallitem => {
+       return smallitem.isDone == true;
+    })
+}
+
+let hideBubble = () => {
+    console.log(items)
+    if ((complete()) && items.length > 0) {
+        document.getElementById("bubble").style.display = "block"
+    }
+    else {
+        document.getElementById("bubble").style.display = "none"
+    }
+}
+
+hideBubble();
