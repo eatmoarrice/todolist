@@ -33,6 +33,10 @@ ul {
     font-weight: 600;
 }
 
+.x-button:hover {
+    background-color: gray;
+}
+
 .title {
     color: white;
     background-color: rgba(95, 158, 160, 0.556);
@@ -122,4 +126,13 @@ body {
 
   .tophead > * {
       margin-top: 10px;
+  }
+
+  a {
+      text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: none;
+    color: orange;
   }
