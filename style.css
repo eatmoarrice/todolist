@@ -13,6 +13,8 @@ ul {
 .card {
     max-width: 1000px;
     min-height: 500px;
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
    
 }
 
