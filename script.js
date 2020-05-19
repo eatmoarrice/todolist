@@ -28,6 +28,7 @@ let updateList = () => {
         else html += `<div id="item${i}"><div class="d-flex"><input type="checkbox" class="cb" checked onchange="done(${i})" id="cb${i}"><li class="li-text"><del>${items[i].content}</del></li><a class="x-button" href="#" onclick="remove(${i})">x</a></div></div>`;    
     }
     document.getElementById("result").innerHTML = html;
+    filterDone();
     localStorage.setItem("localHTML", html);
     localStorage.setItem('localItems', JSON.stringify(items));
 }
@@ -38,7 +39,6 @@ let done = (num) => {
     // else items[num].isDone = false;
     items[num].isDone = !items[num].isDone;
     updateList();
-    filterDone();
 };
 
 let remove = (index) => {
