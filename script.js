@@ -34,8 +34,9 @@ let updateList = () => {
 
 
 let done = (num) => {
-    if (items[num].isDone == false) {items[num].isDone = true}
-    else items[num].isDone = false;
+    // if (items[num].isDone == false) {items[num].isDone = true}
+    // else items[num].isDone = false;
+    items[num].isDone = !items[num].isDone;
     updateList();
     filterDone();
 };
