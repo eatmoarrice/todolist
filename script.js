@@ -1,83 +1,86 @@
-//load local if exists
-
-let items = JSON.parse(localStorage.getItem('localItems'));
-if (items == null) {items = [];} 
-let html = localStorage.getItem('localHTML');
-if (html == null) {html = "";}
-else document.getElementById("result").innerHTML = html;
-console.log(items)
-
-//-----------------------
+let items = [];
+let checkboxdata;
 
 let addItem = () => {
-    let item = {
-        content: document.getElementById("todoinput").value,
-        isDone: false,
-    }
-    items.push(item);
-    updateList(items);
-}
-
+  let item = {
+    content: document.getElementById("todoinput").value,
+    isDone: false,
+  };
+  items.push(item);
+  updateList(items);
+};
 
 let updateList = () => {
-    html = "";
-    for (let i = 0; i < items.length; i++) {
-        if (items[i].isDone == false) {
-            html += `<div id="item${i}"><div class="d-flex"><input type="checkbox" class="cb" onchange="done(${i})" id="cb${i}"><li class="li-text">${items[i].content}</li><a class="x-button" href="#" onclick="remove(${i})">x</a></div></div>`;
-        }
-        else html += `<div id="item${i}"><div class="d-flex"><input type="checkbox" class="cb" checked onchange="done(${i})" id="cb${i}"><li class="li-text"><del>${items[i].content}</del></li><a class="x-button" href="#" onclick="remove(${i})">x</a></div></div>`;    
-    }
-    document.getElementById("result").innerHTML = html;
-    filterDone();
-    hideBubble();
-    localStorage.setItem("localHTML", html);
-    localStorage.setItem('localItems', JSON.stringify(items));
-}
-
+  let html = "";
+  for (let i = 0; i < items.length; i++) {
+    if (items[i].isDone == false) {
+      html += `<div id="item${i}"><div class="d-flex"><input type="checkbox" class="cb" onchange="done(${i})" id="cb${i}"><li class="li-text">${items[i].content}</li><a class="x-button" href="#" onclick="remove(${i})">x</a></div></div>`;
+      
+    } else html += `<div id="item${i}"><div class="d-flex"><input type="checkbox" class="cb" checked onchange="done(${i})" id="cb${i}"><li class="li-text"><del>${items[i].content}</del></li><a class="x-button" href="#" onclick="remove(${i})">x</a></div></div>`;
+  }
+  document.getElementById("result").innerHTML = html;
+  filterDone();
+  localStorage.setItem("localItems", JSON.stringify(items));
+  hideBubble();
+};
 
 let done = (num) => {
-    // if (items[num].isDone == false) {items[num].isDone = true}
-    // else items[num].isDone = false;
-    items[num].isDone = !items[num].isDone;
-    updateList();
-    hideBubble();
+  items[num].isDone = !items[num].isDone;
+  updateList();
 };
 
 let remove = (index) => {
-    items.splice(index,1);
-    console.log(items)
-    updateList();
+  items.splice(index, 1);
+  updateList();
 };
 
 let filterDone = () => {
-    if (document.getElementById("cbtop").checked == true) {
-        for (let i = 0; i < items.length; i++) {
-            if (items[i].isDone == true) {document.getElementById(`item${i}`).style.display = "none"};
-            console.log(document.getElementById(`item${i}`).style.display)
-        }
+  if (document.getElementById("cbtop").checked == true) {
+    for (let i = 0; i < items.length; i++) {
+      if (items[i].isDone == true) {
+        document.getElementById(`item${i}`).style.display = "none";
+      }
+      console.log(document.getElementById(`item${i}`).style.display);
     }
-    else {
-        for (let i = 0; i < items.length; i++) {
-            if (items[i].isDone == true) {document.getElementById(`item${i}`).style.display = "block"};
-        }
+  } else {
+    for (let i = 0; i < items.length; i++) {
+      if (items[i].isDone == true) {
+        document.getElementById(`item${i}`).style.display = "block";
+      }
     }
-}
+  }
+  checkboxdata = document.getElementById("cbtop").checked;
+  localStorage.setItem("checkboxcheck", JSON.stringify(checkboxdata));
+};
 
-// let complete = () =>  {return items.every(item => {item.isDone == true;})}
 let complete = () => {
-    return items.every(smallitem => {
-       return smallitem.isDone == true;
-    })
-}
+  return items.every((smallitem) => {
+    return smallitem.isDone == true;
+  });
+};
 
 let hideBubble = () => {
-    console.log(items)
-    if ((complete()) && items.length > 0) {
-        document.getElementById("bubble").style.display = "block"
-    }
-    else {
-        document.getElementById("bubble").style.display = "none"
-    }
-}
+  console.log(items);
+  if (complete() && items.length > 0) {
+    document.getElementById("bubble").style.display = "block";
+  } else {
+    document.getElementById("bubble").style.display = "none";
+  }
+};
 
-hideBubble();
+
+let load = () => {
+    checkboxdata = JSON.parse(localStorage.getItem("checkboxcheck"));
+    if (checkboxdata == null) {
+        checkboxdata = false;
+    }
+    document.getElementById("cbtop").checked = checkboxdata;
+    items = JSON.parse(localStorage.getItem("localItems"));
+    if (items == null) {
+        items = [];
+    }
+    updateList();
+    hideBubble();
+};
+
+load();
